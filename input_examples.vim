@@ -2,8 +2,8 @@ function! Get_List()
   return ['Pick:', '1.chicago', '2.cincinnati', '3.houston', '4.milwaukee', '5.pittsburgh']
 endfunction
 
-function! CustomListFunc(A,L,P)
-  return ['crooked tree', 'kings island', 'green crest']
+function! CustomFunc(A,L,P)
+  return "crooked tree\nkings island\ngreen crest\nsharon woods\nblue ash\reeves\ncalifornia\nglenview"
 endfunction
 
 function! Input_Examples()
@@ -17,7 +17,7 @@ function! Input_Examples()
   let t = input("type something, with auto-complete = file: ", "", "file")
   echo "\n\tt: [" . t . "]"
 
-  let t = input("type something, with auto-complete = customlist: ", "", "customlist,CustomListFunc")
+  let t = input("type something, with auto-complete = custom: ", "", "custom,CustomFunc")
   echo "\n\tt: [" . t . "]"
 
   echo "inputlist where list is a variable."
