@@ -10,7 +10,6 @@ endfunction
 " :map :rf :call Rake_This_File()<CR>
 " cursor must be in file
 function! Rake_This_File()
-  " :normal lBvE"ay
   let rake_cmd =  '!clear; ruby -Ilib:test ' . @%
   exec rake_cmd
 endfunction
