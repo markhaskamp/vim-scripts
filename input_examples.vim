@@ -3,7 +3,16 @@ function! Get_List()
 endfunction
 
 function! CustomFunc(A,L,P)
-  return "crooked tree\nkings island\ngreen crest\nsharon woods\nblue ash\reeves\ncalifornia\nglenview"
+  let golf_courses = [
+    \ "blue ash", "bay hill",
+    \ "california", "crooked tree",
+    \ "glenview", "green crest",
+    \ "kings island",
+    \ "pebble beach", "pinehurst #2",
+    \ "reeves",
+    \ "sharon woods"
+    \]
+  return join(golf_courses, "\n")
 endfunction
 
 function! Input_Examples()
