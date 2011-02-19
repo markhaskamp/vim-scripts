@@ -6,27 +6,27 @@ function! CustomListFunc(A,L,P)
   return ['crooked tree', 'kings island', 'green crest']
 endfunction
 
-function! Prompt_Example()
+function! Input_Examples()
 
-  let foo = input("type something: ")
-  echo "\n\tfoo: [" . foo . "]"
+  let t = input("type something: ")
+  echo "\n\tt: [" . t . "]"
 
-  let bar = input("type something or use the default: ", "default-text")
-  echo "\n\tbar: [" . bar . "]"
+  let t = input("type something or use the default: ", "default-text")
+  echo "\n\tt: [" . t . "]"
 
-  let baz = input("type something, with auto-complete = file: ", "", "file")
-  echo "\n\tbaz: [" . baz . "]"
+  let t = input("type something, with auto-complete = file: ", "", "file")
+  echo "\n\tt: [" . t . "]"
 
-  let m = input("type something, with auto-complete = customlist: ", "", "customlist,CustomListFunc")
-  echo "\n\tm: [" . m . "]"
+  let t = input("type something, with auto-complete = customlist: ", "", "customlist,CustomListFunc")
+  echo "\n\tt: [" . t . "]"
 
   echo "inputlist where list is a variable."
   let nl_central = Get_List()
-  let m = inputlist(nl_central)
-  echo "\n\tm: [" . m . ", " . nl_central[m]. "]"
+  let t = inputlist(nl_central)
+  echo "\n\tt: [" . t . ", " . nl_central[t]. "]"
 
   echo "inputlist where list is a function."
-  let m = inputlist(Get_List())
-  echo "\n\tm: [" . m . ", " . Get_List()[m] . "]"
+  let t = inputlist(Get_List())
+  echo "\n\tt: [" . t . ", " . Get_List()[t] . "]"
 endfunction
 
