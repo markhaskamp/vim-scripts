@@ -1,25 +1,22 @@
 
-" :map :rt :call Rake_This_Test()<CR>
-"  cursor must be located on test name in its test file
+"  cursor must be located in the test block
 function! Rake_This_Test()
   let word = Get_WORD_under_cursor()
   if Is_test_name(word)
     let test_name_suffix = ' -n ' .  word
   else
     let word = Find_previous_test_name()
-    echo 'word: [' . word . ']'
-"    if (word == 0)
-"      let test_name_suffix = ''
-"    else
+    if Is_test_name(word)
       let test_name_suffix = ' -n ' . word
-"    endif
+    else
+      let test_name_suffix = ''
+    endif
   endif
   let rake_cmd =  '!clear; ruby -Ilib:test ' . @% . test_name_suffix
   " echo rake_cmd
   exec rake_cmd
 endfunction
 
-" :map :rf :call Rake_This_File()<CR>
 " cursor must be in file
 function! Rake_This_File()
   let rake_cmd =  '!clear; ruby -Ilib:test ' . @%
@@ -32,11 +29,19 @@ function! Get_WORD_under_cursor()
 endfunction
 
 function! Is_test_name(word)
-  return (a:word =~ 'test_')
+  " echo 'Is_test_name. word: [' . a:word . ']'
+  if (a:word =~ 'test_')
+    " echo 'Is_test_name. return 1'
+    return 1
+  else
+    " echo 'Is_test_name. return 0'
+    return 0
+  endif
 endfunction
 
 function! Find_previous_test_name()
-  let result = search('test_', 'beW')
+  let result = search('\stest_', 'beW')
+  " echo 'Find_previous_test_name. result: [' . result . ']'
   if (result > 0)
     return Get_WORD_under_cursor()
   else
