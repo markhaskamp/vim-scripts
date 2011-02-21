@@ -68,10 +68,10 @@ function! Show_test_list()
 
   let test_list += [@%, 'test:units', 'test:functionals', 'test:integration', 'test']
   let test_commands_list += ['!clear; ruby -Ilib:test ' . @%]
-  let test_commands_list += ['rake test:units']
-  let test_commands_list += ['rake test:functionals']
-  let test_commands_list += ['rake test:integration']
-  let test_commands_list += ['rake test']
+  let test_commands_list += ['!rake test:units']
+  let test_commands_list += ['!rake test:functionals']
+  let test_commands_list += ['!rake test:integration']
+  let test_commands_list += ['!rake test']
 
   let i = 1
   let display_list = ['0. which test?']
